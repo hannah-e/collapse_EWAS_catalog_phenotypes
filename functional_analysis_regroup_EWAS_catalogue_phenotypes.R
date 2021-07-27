@@ -47,7 +47,6 @@ EWAS_catalog$phenotype[temp==T]<-"cardiometabolic"
 
 temp<-grepl("perinatal|birth_weight|birthweight|maternal_underweight|plasma_folate|prenatal|pregnancy|preterm_birth|season_of_birth|breastfeeding|31230546|33396735|utero|fetal_intolerance_of_labor|Starling-PS_maternal_serum|gestational_weight_gain|parity|fetal_brain_development", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"perinatal"
-
 #31230546 study captures hypertension in pregnancy, preeclampsia
 #33396735 study captures bottle, breast and mixed feeding behaviours
 
@@ -60,7 +59,6 @@ EWAS_catalog$phenotype[temp==T]<-"neurological"
 
 temp<-grepl("socioeconomic_position|maternal_education|educational_attainment|31062658", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"sep"
-
 #31062658 captures various markers of maternal SEP
 
 temp<-grepl("healthy_eating|pufa_intake|arsenic|ppdde|substance_use|atmospheric_iron|atmospheric_nickel|atmospheric_vanadium|tea_consumption|fruit_consumption|juice_consumption|30101351|particulate_matter|folate_intake|selenium|cadmium|noise_pollution|air_pollution|mediterranean_diet|serum_copper|diet_quality", EWAS_catalog$phenotype)
@@ -79,7 +77,7 @@ table(EWAS_catalog$phenotype)
 #### Create table of unique CpGs per category to use in enrichment analysis ###############################################################################
 
 #cut to required p-value threshold
-EWAS_catalog<-EWAS_catalog[EWAS_catalog$P<(0.05/484781),]
+EWAS_catalog<-EWAS_catalog[EWAS_catalog$P<(0.05/484781),] #EDIT TO REDUCE TO REQUIRED P-THRESHOLD
 
 #create output table
 EWAS_catalog_collapsed_freq_table<-table(EWAS_catalog$phenotype)
