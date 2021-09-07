@@ -38,15 +38,18 @@ EWAS_catalog$phenotype[temp==T]<-"ancestry"
 temp<-grepl("cancer|carcinoma|adenoma|melanoma", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"cancer"
 
-temp<-grepl("rheumatoid|ulcerative_colitis|lupus|sjogrens|crohn|inflammatory_bowel_disease|atopy|graves|psoriasis|multiple_sclerosis|cow_milk_allergy|26292806", EWAS_catalog$phenotype)
+temp<-grepl("rheumatoid|ulcerative_colitis|lupus|sjogrens|crohn|inflammatory_bowel_disease|atopy|graves|psoriasis|multiple_sclerosis|cow_milk_allergy|26292806|ige", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"autoimmune"
 #26292806 study captures atopy
 
 temp<-grepl("hiv|human_immunodeficiency_virus", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"infection"
 
-temp<-grepl("blood_pressure|triglycerides|hdl|highdensity_lipoprotein|insulin|glucose|diabetes|chronic_kidney_disease|lipemia|creactive|ige|obesity|hepatic_fat|cholesterol|lipoprotein|ldl|vldl|statin_use|ischaemic_stroke|hypertension|c-reactive_protein|homair|resistin|hba1c|atrial_fibrillation|adiponectin|myocardial_infarction|leptin|liver_fat|coronary_heart_disease|idl|proinsulin|phospholipids|lp_a", EWAS_catalog$phenotype)
+temp<-grepl("blood_pressure |diabetes|chronic_kidney_disease|atrial_fibrillation| ischaemic_stroke|hypertension|myocardial_infarction|coronary_heart_disease |obesity|hepatic_fat|statin_use|creactive|c-reactive_protein|insulin|glucose|homair|resistin|hba1c|adiponectin|leptin|liver_fat |proinsulin", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"cardiometabolic"
+
+temp<-grepl("triglycerides|hdl|highdensity_lipoprotein|lipemia|cholesterol|lipoprotein|ldl|vldl| idl|phospholipids|lp_a ", EWAS_catalog$phenotype)
+EWAS_catalog$phenotype[temp==T]<-"lipid_lipoprotein"
 
 temp<-grepl("perinatal|birth_weight|birthweight|maternal_underweight|plasma_folate|prenatal|pregnancy|preterm_birth|season_of_birth|breastfeeding|31230546|33396735|utero|fetal_intolerance_of_labor|Starling-PS_maternal_serum|gestational_weight_gain|parity|fetal_brain_development", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"perinatal"
@@ -71,11 +74,11 @@ EWAS_catalog$phenotype[temp==T]<-"SEP"
 temp<-grepl("child_abuse|exposure_to_community_and_domestic_violence|exposure_to_intimate_partner_violence|bullying|perceived_discrimination|victimization", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"social_adversity"
 
-temp<-grepl("healthy_eating| mediterranean_diet| diet_quality|pufa_intake|tea_consumption|fruit_consumption|juice_consumption|30101351|folate_intake|serum_copper|selenium|cadmium|arsenic|ppdde|substance_use|illicit_drug_use|esterogen_exposure|altitude| noise_pollution|noise_polution| sunlight_duration", EWAS_catalog$phenotype)
+temp<-grepl("healthy_eating|mediterranean_diet|diet_quality|pufa_intake|tea_consumption|fruit_consumption|juice_consumption|30101351|folate_intake|serum_copper|selenium|cadmium|arsenic|ppdde|substance_use|illicit_drug_use|esterogen_exposure|altitude|noise_pollution|noise_polution|sunlight_duration", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"diet_environment"
 #30101351 study captures one-carbon metabolism nutritents
 
-temp<-grepl("atmospheric_iron|atmospheric_nickel|atmospheric_vanadium|nitrogen_dioxide_exposure|proximity_to_major_roadways| particulate_matter| air_pollution", EWAS_catalog$phenotype)
+temp<-grepl("atmospheric_iron|atmospheric_nickel|atmospheric_vanadium|nitrogen_dioxide_exposure|proximity_to_major_roadways|particulate_matter|air_pollution", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"air_pollutants"
 
 temp<-grepl("24014485|33413638|trimethylaminenoxide", EWAS_catalog$phenotype)
@@ -88,7 +91,7 @@ EWAS_catalog$phenotype[temp==T]<-"miRNA"
 #31282290 study captures EWAS of miRNA expression
 
 #classify everything else as "other":
-temp<-grepl("age|tissue|smoking|alcohol|sex|ancestry|cancer|autoimmune|infection|cardiometabolic|perinatal|cardiovascular|anthropometric|neurological|SEP|social_adversity|diet_environment|air_pollutants|metabolites|miRNA", EWAS_catalog$phenotype)
+temp<-grepl("age|tissue|smoking|alcohol|sex|ancestry|cancer|autoimmune|infection|cardiometabolic|perinatal|cardiovascular|lipid_lipoprotein|anthropometric|neurological|SEP|social_adversity|diet_environment|air_pollutants|metabolites|miRNA", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==F]<-"other"
 
 
