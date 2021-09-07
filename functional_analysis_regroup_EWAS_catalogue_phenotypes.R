@@ -65,7 +65,7 @@ temp<-grepl("dementia|schizophrenia|palsy|alzheimer|depressive_disorder|depressi
 EWAS_catalog$phenotype[temp==T]<-"neurological"
 
 temp<-grepl("socioeconomic_position|maternal_education|educational_attainment|31062658", EWAS_catalog$phenotype)
-EWAS_catalog$phenotype[temp==T]<-"sep"
+EWAS_catalog$phenotype[temp==T]<-"SEP"
 #31062658 captures various markers of maternal SEP
 
 temp<-grepl("child_abuse|exposure_to_community_and_domestic_violence|exposure_to_intimate_partner_violence|bullying|perceived_discrimination|victimization", EWAS_catalog$phenotype)
@@ -75,7 +75,7 @@ temp<-grepl("healthy_eating| mediterranean_diet| diet_quality|pufa_intake|tea_co
 EWAS_catalog$phenotype[temp==T]<-"diet_environment"
 #30101351 study captures one-carbon metabolism nutritents
 
-temp<-grepl("atmospheric_iron|atmospheric_nickel|atmospheric_vanadium|nitrogen_dioxide_exposure|proximity_to_major_roadways| particulate_matter| air_pollution|", EWAS_catalog$phenotype)
+temp<-grepl("atmospheric_iron|atmospheric_nickel|atmospheric_vanadium|nitrogen_dioxide_exposure|proximity_to_major_roadways| particulate_matter| air_pollution", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"air_pollutants"
 
 temp<-grepl("24014485|33413638|trimethylaminenoxide", EWAS_catalog$phenotype)
@@ -88,7 +88,7 @@ EWAS_catalog$phenotype[temp==T]<-"miRNA"
 #31282290 study captures EWAS of miRNA expression
 
 #classify everything else as "other":
-temp<-grepl("age|tissue|smoking|alcohol|sex|ancestry|cancer|autoimmune|infection|cardiometabolic|perinatal|cardiovascular|anthropometric|neurological|sep|social_adversity|diet_environment|air_pollutants|metabolites|miRNA", EWAS_catalog$phenotype)
+temp<-grepl("age|tissue|smoking|alcohol|sex|ancestry|cancer|autoimmune|infection|cardiometabolic|perinatal|cardiovascular|anthropometric|neurological|SEP|social_adversity|diet_environment|air_pollutants|metabolites|miRNA", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==F]<-"other"
 
 
