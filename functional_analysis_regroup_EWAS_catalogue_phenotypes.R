@@ -87,10 +87,8 @@ temp<-grepl("31282290", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"miRNA"
 #31282290 study captures EWAS of miRNA expression
 
-
-
 #classify everything else as "other":
-temp<-grepl("age|tissue|smoking|alcohol|sex|ancestry|cancer|autoimmune|cardiometabolic|perinatal|anthropometric|neurological|sep|diet_environment", EWAS_catalog$phenotype)
+temp<-grepl("age|tissue|smoking|alcohol|sex|ancestry|cancer|autoimmune|infection|cardiometabolic|perinatal|cardiovascular|anthropometric|neurological|sep|social_adversity|diet_environment|air_pollutants|metabolites|miRNA", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==F]<-"other"
 
 
