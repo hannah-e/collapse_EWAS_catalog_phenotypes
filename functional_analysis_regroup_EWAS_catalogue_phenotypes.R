@@ -14,7 +14,6 @@ EWAS_catalog <- as.data.frame(read_delim("http://ewascatalog.org/static//docs/ew
 
 #### reclassify columns in the object "EWAS_catalog" #######################################################################################################
 
-
 EWAS_catalog$phenotype<-EWAS_catalog$StudyID
 
 temp<-grepl("age|aging|fetal_vs_adult_liver", EWAS_catalog$phenotype)
@@ -45,10 +44,10 @@ EWAS_catalog$phenotype[temp==T]<-"autoimmune"
 temp<-grepl("hiv|human_immunodeficiency_virus", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"infection"
 
-temp<-grepl("blood_pressure |diabetes|chronic_kidney_disease|atrial_fibrillation| ischaemic_stroke|hypertension|myocardial_infarction|coronary_heart_disease |obesity|hepatic_fat|statin_use|creactive|c-reactive_protein|insulin|glucose|homair|resistin|hba1c|adiponectin|leptin|liver_fat |proinsulin", EWAS_catalog$phenotype)
+temp<-grepl("blood_pressure|diabetes|chronic_kidney_disease|atrial_fibrillation|ischaemic_stroke|hypertension|myocardial_infarction|coronary_heart_disease|obesity|hepatic_fat|statin_use|creactive|c-reactive_protein|insulin|glucose|homair|resistin|hba1c|adiponectin|leptin|liver_fat|proinsulin|Battram-T_arterial_distensibility|Battram-T_common_carotid_intima-media_thickness|Battram-T_pulse_rate", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"cardiometabolic"
 
-temp<-grepl("triglycerides|hdl|highdensity_lipoprotein|lipemia|cholesterol|lipoprotein|ldl|vldl| idl|phospholipids|lp_a ", EWAS_catalog$phenotype)
+temp<-grepl("triglycerides|hdl|highdensity_lipoprotein|lipemia|cholesterol|lipoprotein|ldl|vldl| idl|phospholipids|lp_a|Battram-T_concentration_of_idl_particles|Battram-T_total_lipids_in_idl|Battram-T_total_phosphoglycerides", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"lipid_lipoprotein"
 
 temp<-grepl("perinatal|birth_weight|birthweight|maternal_underweight|plasma_folate|prenatal|pregnancy|preterm_birth|season_of_birth|breastfeeding|31230546|33396735|utero|fetal_intolerance_of_labor|Starling-PS_maternal_serum|gestational_weight_gain|parity|fetal_brain_development", EWAS_catalog$phenotype)
@@ -57,11 +56,11 @@ EWAS_catalog$phenotype[temp==T]<-"perinatal"
 #33396735 study captures bottle, breast and mixed feeding behaviours
 
 temp<-grepl("copd|fev1|fvc|chronic_obstructive_pulmonary_disease|asthma|lung_function|28621160|26681806", EWAS_catalog$phenotype)
-EWAS_catalog$phenotype[temp==T]<-"cardiovascular"
+EWAS_catalog$phenotype[temp==T]<-"lung"
 #28621160 study captures fev1 and fvc
 #26681806 study captures cardiovascular biomarker GDF-15
 
-temp<-grepl("bmi|body_mass_index|waist_circumference|arm_circumference|head_circumference|hip_circumference|fat|mass|weight|height|skinfold|waist|bone_mineral_density|Battram-T_head|Battram-T_hip|Battram-T_leg|Battram-T_pelvis|Battram-T_ribs|Battram-T_spine|Battram-T_total_body|Battram-T_trunk", EWAS_catalog$phenotype)
+temp<-grepl("bmi|body_mass_index|waist_circumference|arm_circumference|head_circumference|hip_circumference|fat|mass|weight|height|skinfold|waist|bone_mineral_density|Battram-T_head|Battram-T_hip|Battram-T_leg|Battram-T_pelvis|Battram-T_ribs|Battram-T_spine|Battram-T_total_body|Battram-T_trunk|Battram-T_alpha_neck_angle__hip_measurement|Battram-T_theta_neck_angle__hip_measurement|Battram-T_arm_area|Battram-T_arm_bone_mineral_content", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"anthropometric"
 
 temp<-grepl("dementia|schizophrenia|palsy|alzheimer|depressive_disorder|depressive_symptoms|attention_deficit_hyperactivity_disorder|wellbeing|amyloid_plaques|depression|cognitive|personality_disorder|tic_disorders|aggressive_behaviour|infant_attention|cortical|stress|anxiety|neurobehavioural_scale|seizures|conduct_problems|parkinson|social_communication_deficits|hippocampus_volume|thalamus_volume|antidepressant_use|response_to_antidepressants|apolipoprotein|apoe", EWAS_catalog$phenotype)
@@ -74,7 +73,7 @@ EWAS_catalog$phenotype[temp==T]<-"SEP"
 temp<-grepl("child_abuse|exposure_to_community_and_domestic_violence|exposure_to_intimate_partner_violence|bullying|perceived_discrimination|victimization", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"social_adversity"
 
-temp<-grepl("healthy_eating|mediterranean_diet|diet_quality|pufa_intake|tea_consumption|fruit_consumption|juice_consumption|30101351|folate_intake|serum_copper|selenium|cadmium|arsenic|ppdde|substance_use|illicit_drug_use|esterogen_exposure|altitude|noise_pollution|noise_polution|sunlight_duration", EWAS_catalog$phenotype)
+temp<-grepl("healthy_eating|mediterranean_diet|diet_quality|pufa_intake|tea_consumption|fruit_consumption|juice_consumption|30101351|folate_intake|serum_copper|selenium|cadmium|arsenic|ppdde|substance_use|illicit_drug_use|esterogen_exposure|altitude|noise_pollution|noise_polution|sunlight_duration|Battram-T_18_2_linoleic_acid|docosahexaenoic_acid", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==T]<-"diet_environment"
 #30101351 study captures one-carbon metabolism nutritents
 
@@ -91,9 +90,8 @@ EWAS_catalog$phenotype[temp==T]<-"miRNA"
 #31282290 study captures EWAS of miRNA expression
 
 #classify everything else as "other":
-temp<-grepl("age|tissue|smoking|alcohol|sex|ancestry|cancer|autoimmune|infection|cardiometabolic|perinatal|cardiovascular|lipid_lipoprotein|anthropometric|neurological|SEP|social_adversity|diet_environment|air_pollutants|metabolites|miRNA", EWAS_catalog$phenotype)
+temp<-grepl("age|tissue|smoking|alcohol|sex|ancestry|cancer|autoimmune|infection|cardiometabolic|perinatal|lung|lipid_lipoprotein|anthropometric|neurological|SEP|social_adversity|diet_environment|air_pollutants|metabolites|miRNA", EWAS_catalog$phenotype)
 EWAS_catalog$phenotype[temp==F]<-"other"
-
 
 #### check classifications ################################################################################################################################
 
